@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'screens/homepage/homepageview.dart';
+import 'screens/mainpage/main_page.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home:const HomePageView(),
+      home: MainPage(),
     );
   }
 }
