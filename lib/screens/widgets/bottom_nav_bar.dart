@@ -14,7 +14,7 @@ class BottomNavigationComponent extends StatelessWidget  {
           Flexible(
             flex: 1,
             child:
-            Contai
+        
              MaterialButton(
               splashColor: Colors.transparent,
               focusColor: Colors.transparent,
