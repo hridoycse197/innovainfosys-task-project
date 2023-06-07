@@ -2,6 +2,7 @@ import 'package:abdulkader/models/smart_mode_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_switch/flutter_switch.dart';
+import '../widgets/custom_divider.dart';
 import '../widgets/custom_space_widget.dart';
 import '../widgets/custom_text_widget.dart';
 import 'widgets/custom_card.dart';
@@ -218,7 +219,6 @@ class SmartHomeScreenView extends StatelessWidget {
                                   padding: const EdgeInsets.all(8.0),
                                   child: Container(
                                     padding: EdgeInsets.all(10),
-                                    height: 145,
                                     width: MediaQuery.of(context).size.width - 20,
                                     decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: Colors.white),
                                     child: Column(
@@ -241,9 +241,8 @@ class SmartHomeScreenView extends StatelessWidget {
                                                       fontColor: Colors.black,
                                                     ),
                                                     SpaceHorizontal(horizontal: 10),
-                                                    Container(
+                                                    CustomDivider(
                                                       height: 15,
-                                                      color: Color(0xff404040),
                                                       width: .5,
                                                     ),
                                                     SpaceHorizontal(horizontal: 10),
@@ -290,9 +289,8 @@ class SmartHomeScreenView extends StatelessWidget {
                                                 ),
                                               ],
                                             ),
-                                            Container(
+                                            CustomDivider(
                                               height: 50,
-                                              color: Color(0xff404040),
                                               width: .5,
                                             ),
                                             Row(
