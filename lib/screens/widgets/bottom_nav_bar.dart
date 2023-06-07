@@ -1,27 +1,28 @@
+import 'package:abdulkader/screens/mainpage/main_page.dart';
 import 'package:flutter/material.dart';
 
-class BottomNavigationComponent extends StatelessWidget  {
+class BottomNavigationComponent extends StatelessWidget {
+  MainPage x = MainPage();
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return 
+    Container(
       height: 80.0,
-      color:const Color(0xff447381),
-      padding:const EdgeInsets.all(5),
+      color: const Color(0xff447381),
+      padding: const EdgeInsets.all(5),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Flexible(
             flex: 1,
-            child:
-        
-             MaterialButton(
+            child: MaterialButton(
               splashColor: Colors.transparent,
               focusColor: Colors.transparent,
               hoverColor: Colors.transparent,
               highlightColor: Colors.transparent,
               onPressed: () {
-                
+                x.currentIndex = 0;
                 //  print(menuC.currentIndex.value);
               },
               textColor: const Color(0xFFF6FAFC),
@@ -29,13 +30,13 @@ class BottomNavigationComponent extends StatelessWidget  {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: const [
-                 ImageIcon(
-                     AssetImage('assets/png/home fill.png'),
+                  ImageIcon(
+                    AssetImage('assets/png/home fill.png'),
                     color: Colors.white,
                     size: 24.0,
                   ),
                   SizedBox(height: 10.0),
-                 Text(
+                  Text(
                     'HOME',
                     style: TextStyle(
                       fontFamily: 'Manrope',
@@ -47,7 +48,7 @@ class BottomNavigationComponent extends StatelessWidget  {
               ),
             ),
           ),
-           Flexible(
+          Flexible(
             flex: 1,
             child: MaterialButton(
               splashColor: Colors.transparent,
@@ -55,7 +56,7 @@ class BottomNavigationComponent extends StatelessWidget  {
               hoverColor: Colors.transparent,
               highlightColor: Colors.transparent,
               onPressed: () {
-                
+                x.currentIndex = 1;
                 //  print(menuC.currentIndex.value);
               },
               textColor: const Color(0xFFF6FAFC),
@@ -63,13 +64,13 @@ class BottomNavigationComponent extends StatelessWidget  {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: const [
-                 ImageIcon(
-                     AssetImage('assets/png/tabbar.png'),
+                  ImageIcon(
+                    AssetImage('assets/png/tabbar.png'),
                     color: Colors.white,
                     size: 24.0,
                   ),
                   SizedBox(height: 10.0),
-                 Text(
+                  Text(
                     'Smart',
                     style: TextStyle(
                       fontFamily: 'Manrope',
@@ -81,7 +82,7 @@ class BottomNavigationComponent extends StatelessWidget  {
               ),
             ),
           ),
-            Flexible(
+          Flexible(
             flex: 1,
             child: MaterialButton(
               splashColor: Colors.transparent,
@@ -89,7 +90,7 @@ class BottomNavigationComponent extends StatelessWidget  {
               hoverColor: Colors.transparent,
               highlightColor: Colors.transparent,
               onPressed: () {
-                
+                x.currentIndex = 2;
                 //  print(menuC.currentIndex.value);
               },
               textColor: const Color(0xFFF6FAFC),
@@ -97,13 +98,13 @@ class BottomNavigationComponent extends StatelessWidget  {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: const [
-                 ImageIcon(
-                     AssetImage('assets/png/pie.png'),
+                  ImageIcon(
+                    AssetImage('assets/png/pie.png'),
                     color: Colors.white,
                     size: 24.0,
                   ),
                   SizedBox(height: 10.0),
-                 Text(
+                  Text(
                     'Usage',
                     style: TextStyle(
                       fontFamily: 'Manrope',
@@ -115,7 +116,7 @@ class BottomNavigationComponent extends StatelessWidget  {
               ),
             ),
           ),
-            Flexible(
+          Flexible(
             flex: 1,
             child: MaterialButton(
               splashColor: Colors.transparent,
@@ -123,7 +124,7 @@ class BottomNavigationComponent extends StatelessWidget  {
               hoverColor: Colors.transparent,
               highlightColor: Colors.transparent,
               onPressed: () {
-                
+                x.currentIndex = 3;
                 //  print(menuC.currentIndex.value);
               },
               textColor: const Color(0xFFF6FAFC),
@@ -131,13 +132,13 @@ class BottomNavigationComponent extends StatelessWidget  {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: const [
-                 ImageIcon(
-                     AssetImage('assets/png/user.png'),
+                  ImageIcon(
+                    AssetImage('assets/png/user.png'),
                     color: Colors.white,
                     size: 24.0,
                   ),
                   SizedBox(height: 10.0),
-                 Text(
+                  Text(
                     'Profile',
                     style: TextStyle(
                       fontFamily: 'Manrope',
@@ -149,7 +150,7 @@ class BottomNavigationComponent extends StatelessWidget  {
               ),
             ),
           ),
-      ],
+        ],
       ),
     );
   }
