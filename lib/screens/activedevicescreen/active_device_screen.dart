@@ -1,13 +1,10 @@
-import 'package:abdulkader/models/smart_mode_model.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:flutter_switch/flutter_switch.dart';
 import '../../models/active_device_model.dart';
-import '../widgets/custom_divider.dart';
+
 import '../widgets/custom_space_widget.dart';
 import '../widgets/custom_text_widget.dart';
-import 'widgets/custom_card.dart';
-import 'widgets/custom_card_grid.dart';
+
 
 class ActiveDeviceScreenView extends StatelessWidget {
   String selectedItem = 'Living Room';

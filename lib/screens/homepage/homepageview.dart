@@ -48,114 +48,124 @@ class HomePageView extends StatelessWidget {
                 child: Column(
                   children: [
                     SpaceVertical(vertical: kToolbarHeight),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                    Stack(
                       children: [
-                        Column(
-                          //mainAxisAlignment: MainAxisAlignment.start,
+                        Positioned(left: 0, top: -20, child: Image.asset('assets/png/left_cloud1.png')),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            CustomTextWidget(
-                              fontSize: 35,
-                              text: 'Good Morning,',
-                              fontWeight: FontWeight.bold,
+                            Column(
+                              //mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                CustomTextWidget(
+                                  fontSize: 35,
+                                  text: 'Good Morning,',
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                CustomTextWidget(
+                                  fontSize: 20,
+                                  text: 'Kimberly Mastrangelo',
+                                  fontColor: Colors.black,
+                                )
+                              ],
                             ),
-                            CustomTextWidget(
-                              fontSize: 20,
-                              text: 'Kimberly Mastrangelo',
-                              fontColor: Colors.black,
+                            const CircleAvatar(
+                              backgroundColor: Color(0xffFFFFFF),
+                              child: Icon(
+                                Icons.add_alert_sharp,
+                                color: Colors.black,
+                              ),
                             )
                           ],
                         ),
-                        const CircleAvatar(
-                          backgroundColor: Color(0xffFFFFFF),
-                          child: Icon(
-                            Icons.add_alert_sharp,
-                            color: Colors.black,
-                          ),
-                        )
                       ],
                     ),
                     SpaceVertical(vertical: 10),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: const Color(0xffd6e4e9),
-                        ),
-                        width: MediaQuery.of(context).size.width,
-                        child: Padding(
-                          padding: const EdgeInsets.all(12.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    Stack(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: const Color(0xffd6e4e9),
+                            ),
+                            width: MediaQuery.of(context).size.width,
+                            child: Padding(
+                              padding: const EdgeInsets.all(12.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Image.asset('assets/weather_icon.png'),
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                                     children: [
-                                      CustomTextWidget(
-                                        text: 'May 16,2023 10:05 am',
-                                        fontSize: 15,
-                                        fontColor: Colors.black,
+                                      Image.asset('assets/weather_icon.png'),
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          CustomTextWidget(
+                                            text: 'May 16,2023 10:05 am',
+                                            fontSize: 15,
+                                            fontColor: Colors.black,
+                                          ),
+                                          CustomTextWidget(
+                                            text: 'Cloudy',
+                                            fontSize: 15,
+                                            fontColor: Colors.black,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                          CustomTextWidget(
+                                            text: 'Jakarta,Indonesia',
+                                            fontSize: 15,
+                                            fontColor: Colors.black,
+                                          ),
+                                        ],
                                       ),
+                                      SpaceHorizontal(horizontal: 15),
                                       CustomTextWidget(
-                                        text: 'Cloudy',
-                                        fontSize: 15,
+                                        text: '19\u02DAc',
+                                        fontSize: 35,
                                         fontColor: Colors.black,
                                         fontWeight: FontWeight.bold,
                                       ),
-                                      CustomTextWidget(
-                                        text: 'Jakarta,Indonesia',
-                                        fontSize: 15,
-                                        fontColor: Colors.black,
-                                      ),
                                     ],
                                   ),
-                                  SpaceHorizontal(horizontal: 15),
-                                  CustomTextWidget(
-                                    text: '19\u02DAc',
-                                    fontSize: 35,
-                                    fontColor: Colors.black,
-                                    fontWeight: FontWeight.bold,
+                                  const Divider(
+                                    thickness: 2,
                                   ),
-                                ],
-                              ),
-                              const Divider(
-                                thickness: 2,
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                children: [
-                                  CustomCard(
-                                    imagePath: 'assets/png/water_drop_icon.png',
-                                    title: 'Humadity',
-                                    percentange: '97 ',
-                                    titletrailing: '%',
-                                  ),
-                                  CustomCard(
-                                    imagePath: 'assets/png/water_drop_icon.png',
-                                    title: 'Visibility',
-                                    percentange: '7 ',
-                                    titletrailing: 'km',
-                                  ),
-                                  CustomCard(
-                                    imagePath: 'assets/png/water_drop_icon.png',
-                                    title: 'NE Wind',
-                                    percentange: '3 ',
-                                    titletrailing: 'km/h',
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                    children: [
+                                      CustomCard(
+                                        imagePath: 'assets/png/water_drop_icon.png',
+                                        title: 'Humadity',
+                                        percentange: '97 ',
+                                        titletrailing: '%',
+                                      ),
+                                      CustomCard(
+                                        imagePath: 'assets/png/water_drop_icon.png',
+                                        title: 'Visibility',
+                                        percentange: '7 ',
+                                        titletrailing: 'km',
+                                      ),
+                                      CustomCard(
+                                        imagePath: 'assets/png/water_drop_icon.png',
+                                        title: 'NE Wind',
+                                        percentange: '3 ',
+                                        titletrailing: 'km/h',
+                                      )
+                                    ],
                                   )
                                 ],
-                              )
-                            ],
+                              ),
+                            ),
                           ),
                         ),
-                      ),
+                        Positioned(bottom: 0, right: 2, child: Image.asset('assets/png/twemoji_sun.png')),
+                      ],
                     )
                   ],
                 ),
