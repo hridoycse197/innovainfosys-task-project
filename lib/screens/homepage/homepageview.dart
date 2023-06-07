@@ -12,7 +12,7 @@ class HomePageView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(children: [
       //====================== Heading Section Start ======================
-      Flexible(
+      Expanded(
           flex: 4,
           child: Stack(children: [
             Container(

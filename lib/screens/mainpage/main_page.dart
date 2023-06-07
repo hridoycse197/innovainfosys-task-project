@@ -1,4 +1,5 @@
 import 'package:abdulkader/screens/homepage/homepageview.dart';
+import 'package:abdulkader/screens/smarthomescreen/smart_home_screen.dart';
 import 'package:abdulkader/screens/widgets/custom_text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -20,7 +21,7 @@ class MainPage extends StatelessWidget {
   Widget getCurrentPage() {
     switch (currentIndex) {
       case 0:
-        return HomePageView();
+        return  SmartHomeScreenView();
       case 1:
         return HomePageView();
       case 2:
