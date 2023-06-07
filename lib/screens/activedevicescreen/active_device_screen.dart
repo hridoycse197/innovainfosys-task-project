@@ -1,13 +1,16 @@
+import 'package:abdulkader/models/smart_mode_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import '../../models/active_device_model.dart';
+import '../widgets/custom_divider.dart';
 import '../widgets/custom_space_widget.dart';
 import '../widgets/custom_text_widget.dart';
 import 'widgets/custom_card.dart';
 import 'widgets/custom_card_grid.dart';
 
-class HomePageView extends StatelessWidget {
+class ActiveDeviceScreenView extends StatelessWidget {
+  String selectedItem = 'Living Room';
   List<ActiveDeviceModel> datas = [
     ActiveDeviceModel(
       heading: 'Tempurature',
@@ -25,17 +28,80 @@ class HomePageView extends StatelessWidget {
       status: false,
       title: 'Lamp',
     ),
+    ActiveDeviceModel(
+      heading: 'Colour',
+      place: 'Bed room',
+      subtitle: 'Yellow',
+      icon: 'assets/png/lights.png',
+      status: false,
+      title: 'Lamp',
+    ),
+    ActiveDeviceModel(
+      heading: 'Colour',
+      place: 'Dining room',
+      subtitle: 'White',
+      icon: 'assets/png/lights.png',
+      status: false,
+      title: 'Lamp',
+    ),
+    ActiveDeviceModel(
+      heading: 'Colour',
+      place: 'Bed room',
+      subtitle: 'Yellow',
+      icon: 'assets/png/lights.png',
+      status: false,
+      title: 'Lamp',
+    ),
+    ActiveDeviceModel(
+      heading: 'Colour',
+      place: 'Dining room',
+      subtitle: 'White',
+      icon: 'assets/png/lights.png',
+      status: false,
+      title: 'Lamp',
+    ),
+    ActiveDeviceModel(
+      heading: 'Colour',
+      place: 'Bed room',
+      subtitle: 'Yellow',
+      icon: 'assets/png/lights.png',
+      status: false,
+      title: 'Lamp',
+    ),
+    ActiveDeviceModel(
+      heading: 'Tempurature',
+      place: 'Living room',
+      subtitle: '19\u02DAc',
+      icon: 'assets/png/ac_image.png',
+      status: false,
+      title: 'AC',
+    ),
+    ActiveDeviceModel(
+      heading: 'Channel',
+      place: 'Bed room',
+      subtitle: 'TVN',
+      icon: 'assets/png/tv.png',
+      status: false,
+      title: 'TV',
+    ),
+    ActiveDeviceModel(
+      heading: 'Tempurature',
+      place: 'Bedroom',
+      subtitle: '12\u02DAc',
+      icon: 'assets/png/ac_image.png',
+      status: false,
+      title: 'AC',
+    ),
   ];
-
   @override
   Widget build(BuildContext context) {
     return Column(children: [
       //====================== Heading Section Start ======================
       Expanded(
-          flex: 4,
+          flex: 2,
           child: Stack(children: [
             Container(
-              color: const Color(0xffFFFFFF),
+              color: const Color(0xffD8E4E8),
             ),
             Container(
               width: MediaQuery.of(context).size.width,
@@ -44,7 +110,7 @@ class HomePageView extends StatelessWidget {
                 color: Color(0xff447381),
               ),
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                padding: const EdgeInsets.symmetric(horizontal: 15.0),
                 child: Column(
                   children: [
                     SpaceVertical(vertical: kToolbarHeight),
@@ -52,111 +118,31 @@ class HomePageView extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Column(
-                          //mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                        Row(
                           children: [
-                            CustomTextWidget(
-                              fontSize: 35,
-                              text: 'Good Morning,',
-                              fontWeight: FontWeight.bold,
+                            const Icon(
+                              Icons.arrow_back_ios,
+                              size: 20,
+                              color: Colors.white,
                             ),
-                            CustomTextWidget(
-                              fontSize: 20,
-                              text: 'Kimberly Mastrangelo',
-                              fontColor: Colors.black,
-                            )
+                            CustomTextWidget(text: 'Back', fontSize: 15)
                           ],
                         ),
+                        CustomTextWidget(
+                          fontSize: 24,
+                          text: 'Smart Home',
+                          fontWeight: FontWeight.bold,
+                        ),
                         const CircleAvatar(
+                          radius: 15,
                           backgroundColor: Color(0xffFFFFFF),
                           child: Icon(
-                            Icons.add_alert_sharp,
-                            color: Colors.black,
+                            Icons.search,
+                            size: 20,
                           ),
                         )
                       ],
                     ),
-                    SpaceVertical(vertical: 10),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: const Color(0xffd6e4e9),
-                        ),
-                        width: MediaQuery.of(context).size.width,
-                        child: Padding(
-                          padding: const EdgeInsets.all(12.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                children: [
-                                  Image.asset('assets/weather_icon.png'),
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      CustomTextWidget(
-                                        text: 'May 16,2023 10:05 am',
-                                        fontSize: 15,
-                                        fontColor: Colors.black,
-                                      ),
-                                      CustomTextWidget(
-                                        text: 'Cloudy',
-                                        fontSize: 15,
-                                        fontColor: Colors.black,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                      CustomTextWidget(
-                                        text: 'Jakarta,Indonesia',
-                                        fontSize: 15,
-                                        fontColor: Colors.black,
-                                      ),
-                                    ],
-                                  ),
-                                  SpaceHorizontal(horizontal: 15),
-                                  CustomTextWidget(
-                                    text: '19\u02DAc',
-                                    fontSize: 35,
-                                    fontColor: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ],
-                              ),
-                              const Divider(
-                                thickness: 2,
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                children: [
-                                  CustomCard(
-                                    imagePath: 'assets/png/water_drop_icon.png',
-                                    title: 'Humadity',
-                                    percentange: '97 ',
-                                    titletrailing: '%',
-                                  ),
-                                  CustomCard(
-                                    imagePath: 'assets/png/water_drop_icon.png',
-                                    title: 'Visibility',
-                                    percentange: '7 ',
-                                    titletrailing: 'km',
-                                  ),
-                                  CustomCard(
-                                    imagePath: 'assets/png/water_drop_icon.png',
-                                    title: 'NE Wind',
-                                    percentange: '3 ',
-                                    titletrailing: 'km/h',
-                                  )
-                                ],
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                    )
                   ],
                 ),
               ),
@@ -166,7 +152,7 @@ class HomePageView extends StatelessWidget {
 
       //====================== Body Section Start======================
       Flexible(
-          flex: 4,
+          flex: 11,
           child: Stack(children: [
             Container(
               color: const Color(0xff447381),
@@ -174,7 +160,7 @@ class HomePageView extends StatelessWidget {
             Container(
                 width: MediaQuery.of(context).size.width,
                 decoration: const BoxDecoration(
-                  color: Color(0xffFFFFFF),
+                  color: Color(0xffD8E4E8),
                   borderRadius: BorderRadius.only(topRight: Radius.circular(50)),
                 ),
                 child: Padding(
@@ -182,50 +168,44 @@ class HomePageView extends StatelessWidget {
                   child: SingleChildScrollView(
                     physics: const BouncingScrollPhysics(),
                     child: Column(children: [
-                      SpaceVertical(vertical: 10),
+                      SpaceVertical(vertical: 35),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          CustomTextWidget(
-                            text: 'Rooms',
-                            fontSize: 25,
-                            fontColor: const Color(0xff404040),
+                          Row(
+                            children: [
+                              CustomTextWidget(
+                                text: 'Device Active',
+                                fontSize: 25,
+                                fontColor: const Color(0xff404040),
+                              ),
+                              SpaceHorizontal(horizontal: 5),
+                              Container(
+                                alignment: Alignment.center,
+                                padding: const EdgeInsets.all(5),
+                                decoration: const BoxDecoration(
+                                  borderRadius: BorderRadius.all(Radius.circular(5)),
+                                  color: Color(0xff447381),
+                                ),
+                                child: CustomTextWidget(
+                                  text: '6',
+                                  fontSize: 14,
+                                  fontColor: Colors.white,
+                                ),
+                              ),
+                            ],
                           ),
-                          CustomTextWidget(
-                            text: 'See All',
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            fontColor: const Color(0xff4C7380),
-                          ),
-                        ],
-                      ),
-                      SpaceVertical(vertical: 10),
-                      Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-                        Customcardgrid(imagePath: 'assets/png/sofa_image.png', celcius: '19', count: '5', title: 'Living Room'),
-                        Customcardgrid(imagePath: 'assets/png/bedroom_image.png', celcius: '12', count: '8', title: 'Bedroom'),
-                      ]),
-                      SpaceVertical(vertical: 20),
-                      Row(
-                        children: [
-                          CustomTextWidget(
-                            text: 'Active',
-                            fontSize: 25,
-                            fontColor: const Color(0xff404040),
-                          ),
-                          SpaceHorizontal(horizontal: 5),
                           Container(
-                            alignment: Alignment.center,
-                            padding: const EdgeInsets.all(5),
-                            decoration: const BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(5)),
-                              color: Color(0xff447381),
+                            height: 40,
+                            width: 40,
+                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(8), color: Color(0xff9A7265), boxShadow: [
+                              BoxShadow(color: Color(0xff000000).withOpacity(.2), offset: Offset(0, 2), blurRadius: 6, spreadRadius: 1)
+                            ]),
+                            child: const Icon(
+                              Icons.add,
+                              color: Colors.white,
                             ),
-                            child: CustomTextWidget(
-                              text: '6',
-                              fontSize: 14,
-                              fontColor: Colors.white,
-                            ),
-                          ),
+                          )
                         ],
                       ),
                       SpaceVertical(vertical: 10),
@@ -324,7 +304,21 @@ class HomePageView extends StatelessWidget {
                                 ))
                             .toList(),
                       ),
-                      SpaceVertical(vertical: 50)
+                      SpaceVertical(vertical: 10),
+                      Container(
+                        alignment: Alignment.center,
+                        width: MediaQuery.of(context).size.width - 40,
+                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: Color(0xff9A7265), boxShadow: [
+                          BoxShadow(color: Color(0xff000000).withOpacity(.2), offset: Offset(0, 2), blurRadius: 6, spreadRadius: 1)
+                        ]),
+                        height: 52,
+                        child: CustomTextWidget(
+                          text: 'Turn Off All Devices',
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SpaceVertical(vertical: 10),
                     ]),
                   ),
                 ))
