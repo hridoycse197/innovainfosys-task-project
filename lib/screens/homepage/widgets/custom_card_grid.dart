@@ -13,13 +13,12 @@ class Customcardgrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return 
-    Container(
+    return Container(
       width: MediaQuery.of(context).size.width * .4,
       alignment: Alignment.center,
       padding: EdgeInsets.all(14),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(20),
         color: const Color(0xffe2ecef),
       ),
       child: Column(children: [
@@ -44,7 +43,7 @@ class Customcardgrid extends StatelessWidget {
             ),
           ],
         ),
-  Image.asset(imagePath),
+        Image.asset(imagePath),
         CustomTextWidget(
           text: title,
           fontSize: 14,

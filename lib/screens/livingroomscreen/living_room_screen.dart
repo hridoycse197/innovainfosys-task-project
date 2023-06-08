@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import '../../models/active_device_model.dart';
 
+import '../widgets/custom_divider.dart';
 import '../widgets/custom_space_widget.dart';
 import '../widgets/custom_text_widget.dart';
 
-class ActiveDeviceScreenView extends StatelessWidget {
+class LivingRoomScreenView extends StatelessWidget {
   String selectedItem = 'Living Room';
   List<ActiveDeviceModel> datas = [
     ActiveDeviceModel(
@@ -126,7 +127,7 @@ class ActiveDeviceScreenView extends StatelessWidget {
                             ),
                             CustomTextWidget(
                               fontSize: 24,
-                              text: 'Smart Home',
+                              text: 'Living Room',
                               fontWeight: FontWeight.bold,
                             ),
                             const CircleAvatar(
@@ -138,6 +139,108 @@ class ActiveDeviceScreenView extends StatelessWidget {
                               ),
                             )
                           ],
+                        ),
+                        SpaceVertical(vertical: 20),
+                        Container(
+                          padding: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Color(0xff404040)),
+                            borderRadius: BorderRadius.circular(14),
+                            color: Color(0xffD8E4E8),
+                          ),
+                          height: MediaQuery.of(context).size.height * .08,
+                          width: MediaQuery.of(context).size.width - 35,
+                          child: Row(
+                            children: [
+                              Expanded(
+                                flex: 1,
+                                child: Row(
+                                  children: [
+                                    Image.asset('assets/png/suhu.png'),
+                                    SpaceHorizontal(horizontal: 5),
+                                    Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        CustomTextWidget(
+                                          text: '19\u02DAc',
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold,
+                                          fontColor: Color(0xff4C7380),
+                                        ),
+                                        CustomTextWidget(
+                                          text: 'AC',
+                                          fontSize: 11,
+                                          fontWeight: FontWeight.normal,
+                                          fontColor: Color(0xff4C7380),
+                                        )
+                                      ],
+                                    ),
+                                    SpaceHorizontal(horizontal: 10),
+                                    CustomDivider(color: Color(0xff404040),
+                                      height: 35,
+                                      width: 2,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Expanded(
+                                flex: 1,
+                                child: Row(
+                                  children: [
+                                    Image.asset('assets/png/lamp1.png'),
+                                    Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        CustomTextWidget(
+                                          text: '18 %',
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold,
+                                          fontColor: Color(0xff4C7380),
+                                        ),
+                                        CustomTextWidget(
+                                          text: 'Light Lamp',
+                                          fontSize: 11,
+                                          fontWeight: FontWeight.normal,
+                                          fontColor: Color(0xff4C7380),
+                                        )
+                                      ],
+                                    ),
+                                    SpaceHorizontal(horizontal: 10),
+                                    CustomDivider(color: Color(0xff404040),
+                                      height: 35,
+                                      width: 2,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Expanded(
+                                flex: 1,
+                                child: Row(
+                                  children: [
+                                    Image.asset('assets/png/wifi.png'),
+                                    SpaceHorizontal(horizontal: 5),
+                                    Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        CustomTextWidget(
+                                          text: '10 Kb/s',
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold,
+                                          fontColor: Color(0xff4C7380),
+                                        ),
+                                        CustomTextWidget(
+                                          text: 'WIFI',
+                                          fontSize: 11,
+                                          fontWeight: FontWeight.normal,
+                                          fontColor: Color(0xff4C7380),
+                                        )
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                         SpaceVertical(vertical: 20),
                       ],
@@ -170,7 +273,7 @@ class ActiveDeviceScreenView extends StatelessWidget {
                               Row(
                                 children: [
                                   CustomTextWidget(
-                                    text: 'Device Active',
+                                    text: 'Device',
                                     fontSize: 25,
                                     fontColor: const Color(0xff404040),
                                   ),

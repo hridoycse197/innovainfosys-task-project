@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
 class CustomDivider extends StatelessWidget {
-  double height;
+  double height;Color color;
   double width;
    CustomDivider({
-   required this.height,required this.width
+   required this.height,required this.width,required  this.color,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: height,
-      color: Color(0xff404040),
+      color: color,
       width:width,
     );
   }
