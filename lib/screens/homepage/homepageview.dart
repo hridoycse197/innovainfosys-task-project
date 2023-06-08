@@ -1,3 +1,5 @@
+import 'package:abdulkader/screens/itemdetailscreen/item_details_screen.dart';
+import 'package:abdulkader/screens/activedevicescreen/active_device_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_switch/flutter_switch.dart';
@@ -114,7 +116,7 @@ class HomePageView extends StatelessWidget {
                                             Row(
                                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                                               children: [
-                                                Image.asset('assets/weather_icon.png'),
+                                                Image.asset('assets/png/weather_icon.png'),
                                                 Column(
                                                   crossAxisAlignment: CrossAxisAlignment.start,
                                                   children: [
@@ -215,11 +217,20 @@ class HomePageView extends StatelessWidget {
                                   fontSize: 25,
                                   fontColor: const Color(0xff404040),
                                 ),
-                                CustomTextWidget(
-                                  text: 'See All',
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  fontColor: const Color(0xff4C7380),
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(context, MaterialPageRoute(
+                                      builder: (context) {
+                                        return ItemDetailsScreenView();
+                                      },
+                                    ));
+                                  },
+                                  child: CustomTextWidget(
+                                    text: 'See All',
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    fontColor: const Color(0xff4C7380),
+                                  ),
                                 ),
                               ],
                             ),
@@ -230,26 +241,46 @@ class HomePageView extends StatelessWidget {
                             ]),
                             SpaceVertical(vertical: 20),
                             Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                CustomTextWidget(
-                                  text: 'Active',
-                                  fontSize: 25,
-                                  fontColor: const Color(0xff404040),
+                                Row(
+                                  children: [
+                                    CustomTextWidget(
+                                      text: 'Active',
+                                      fontSize: 25,
+                                      fontColor: const Color(0xff404040),
+                                    ),
+                                    SpaceHorizontal(horizontal: 5),
+                                    Container(
+                                      alignment: Alignment.center,
+                                      padding: const EdgeInsets.all(5),
+                                      decoration: const BoxDecoration(
+                                        borderRadius: BorderRadius.all(Radius.circular(5)),
+                                        color: Color(0xff447381),
+                                      ),
+                                      child: CustomTextWidget(
+                                        text: '6',
+                                        fontSize: 14,
+                                        fontColor: Colors.white,
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                                SpaceHorizontal(horizontal: 5),
-                                Container(
-                                  alignment: Alignment.center,
-                                  padding: const EdgeInsets.all(5),
-                                  decoration: const BoxDecoration(
-                                    borderRadius: BorderRadius.all(Radius.circular(5)),
-                                    color: Color(0xff447381),
-                                  ),
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(context, MaterialPageRoute(
+                                      builder: (context) {
+                                        return ActiveDeviceScreenView();
+                                      },
+                                    ));
+                                  },
                                   child: CustomTextWidget(
-                                    text: '6',
-                                    fontSize: 14,
-                                    fontColor: Colors.white,
+                                    text: 'See All',
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    fontColor: const Color(0xff4C7380),
                                   ),
-                                ),
+                                )
                               ],
                             ),
                             SpaceVertical(vertical: 10),

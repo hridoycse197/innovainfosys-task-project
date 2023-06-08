@@ -1,12 +1,22 @@
 import 'package:flutter/material.dart';
 import '../../models/active_device_model.dart';
 
+import '../widgets/chart_component.dart';
 import '../widgets/custom_divider.dart';
 import '../widgets/custom_space_widget.dart';
 import '../widgets/custom_text_widget.dart';
 
 class LivingRoomScreenView extends StatelessWidget {
   String selectedItem = 'Living Room';
+  List<ChartSampleData> chartData = <ChartSampleData>[
+    ChartSampleData(x: '1pm', y: 51),
+    ChartSampleData(x: '2pm', y: 89),
+    ChartSampleData(x: '3pm', y: 150),
+    ChartSampleData(x: '4pm', y: 55),
+    ChartSampleData(x: '5pm', y: 56),
+    ChartSampleData(x: '6pm', y: 75),
+    ChartSampleData(x: '7pm', y: 135),
+  ];
   List<ActiveDeviceModel> datas = [
     ActiveDeviceModel(
       heading: 'Tempurature',
@@ -91,346 +101,383 @@ class LivingRoomScreenView extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(mainAxisSize: MainAxisSize.min, children: [
-        //====================== Heading Section Start ======================
-        Flexible(
-          fit: FlexFit.loose,
-          flex: 2,
-          child: Container(
-              color: const Color(0xffD8E4E8),
-              child: Stack(children: [
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.only(bottomLeft: Radius.circular(50)),
-                    color: Color(0xff447381),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                    child: Column(
-                      children: [
-                        SpaceVertical(vertical: kToolbarHeight),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              children: [
-                                const Icon(
-                                  Icons.arrow_back_ios,
-                                  size: 20,
-                                  color: Colors.white,
-                                ),
-                                CustomTextWidget(text: 'Back', fontSize: 15)
-                              ],
-                            ),
-                            CustomTextWidget(
-                              fontSize: 24,
-                              text: 'Living Room',
-                              fontWeight: FontWeight.bold,
-                            ),
-                            const CircleAvatar(
-                              radius: 15,
-                              backgroundColor: Color(0xffFFFFFF),
-                              child: Icon(
-                                Icons.search,
-                                size: 20,
-                              ),
-                            )
-                          ],
-                        ),
-                        SpaceVertical(vertical: 20),
-                        Container(
-                          padding: EdgeInsets.all(10),
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Color(0xff404040)),
-                            borderRadius: BorderRadius.circular(14),
-                            color: Color(0xffD8E4E8),
-                          ),
-                          height: MediaQuery.of(context).size.height * .08,
-                          width: MediaQuery.of(context).size.width - 35,
-                          child: Row(
-                            children: [
-                              Expanded(
-                                flex: 1,
-                                child: Row(
-                                  children: [
-                                    Image.asset('assets/png/suhu.png'),
-                                    SpaceHorizontal(horizontal: 5),
-                                    Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        CustomTextWidget(
-                                          text: '19\u02DAc',
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold,
-                                          fontColor: Color(0xff4C7380),
-                                        ),
-                                        CustomTextWidget(
-                                          text: 'AC',
-                                          fontSize: 11,
-                                          fontWeight: FontWeight.normal,
-                                          fontColor: Color(0xff4C7380),
-                                        )
-                                      ],
-                                    ),
-                                    SpaceHorizontal(horizontal: 10),
-                                    CustomDivider(color: Color(0xff404040),
-                                      height: 35,
-                                      width: 2,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Expanded(
-                                flex: 1,
-                                child: Row(
-                                  children: [
-                                    Image.asset('assets/png/lamp1.png'),
-                                    Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        CustomTextWidget(
-                                          text: '18 %',
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold,
-                                          fontColor: Color(0xff4C7380),
-                                        ),
-                                        CustomTextWidget(
-                                          text: 'Light Lamp',
-                                          fontSize: 11,
-                                          fontWeight: FontWeight.normal,
-                                          fontColor: Color(0xff4C7380),
-                                        )
-                                      ],
-                                    ),
-                                    SpaceHorizontal(horizontal: 10),
-                                    CustomDivider(color: Color(0xff404040),
-                                      height: 35,
-                                      width: 2,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Expanded(
-                                flex: 1,
-                                child: Row(
-                                  children: [
-                                    Image.asset('assets/png/wifi.png'),
-                                    SpaceHorizontal(horizontal: 5),
-                                    Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        CustomTextWidget(
-                                          text: '10 Kb/s',
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold,
-                                          fontColor: Color(0xff4C7380),
-                                        ),
-                                        CustomTextWidget(
-                                          text: 'WIFI',
-                                          fontSize: 11,
-                                          fontWeight: FontWeight.normal,
-                                          fontColor: Color(0xff4C7380),
-                                        )
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SpaceVertical(vertical: 20),
-                      ],
-                    ),
-                  ),
-                )
-              ])),
-        ),
-        //====================== Heading Section End ======================
-
-        //====================== Body Section Start======================
-        Flexible(
-            flex: 11,
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Column(mainAxisSize: MainAxisSize.min, children: [
+          //====================== Heading Section Start ======================
+          Flexible(
+            fit: FlexFit.loose,
+            flex: 2,
             child: Container(
-                color: const Color(0xff447381),
+                color: const Color(0xffD8E4E8),
                 child: Stack(children: [
                   Container(
-                      width: MediaQuery.of(context).size.width,
-                      decoration: const BoxDecoration(
-                        color: Color(0xffD8E4E8),
-                        borderRadius: BorderRadius.only(topRight: Radius.circular(50)),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                        child: Column(children: [
-                          SpaceVertical(vertical: 15),
+                    width: MediaQuery.of(context).size.width,
+                    decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.only(bottomLeft: Radius.circular(50)),
+                      color: Color(0xff447381),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                      child: Column(
+                        children: [
+                          SpaceVertical(vertical: kToolbarHeight),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Row(
-                                children: [
-                                  CustomTextWidget(
-                                    text: 'Device',
-                                    fontSize: 25,
-                                    fontColor: const Color(0xff404040),
-                                  ),
-                                  SpaceHorizontal(horizontal: 5),
-                                  Container(
-                                    alignment: Alignment.center,
-                                    padding: const EdgeInsets.all(5),
-                                    decoration: const BoxDecoration(
-                                      borderRadius: BorderRadius.all(Radius.circular(5)),
-                                      color: Color(0xff447381),
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.of(context).pop();
+                                },
+                                child: Row(
+                                  children: [
+                                    const Icon(
+                                      Icons.arrow_back_ios,
+                                      size: 20,
+                                      color: Colors.white,
                                     ),
-                                    child: CustomTextWidget(
-                                      text: '6',
-                                      fontSize: 14,
-                                      fontColor: Colors.white,
-                                    ),
-                                  ),
-                                ],
+                                    CustomTextWidget(text: 'Back', fontSize: 15)
+                                  ],
+                                ),
                               ),
-                              Container(
-                                height: 40,
-                                width: 40,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8),
-                                    color: Color(0xff9A7265),
-                                    boxShadow: [
-                                      BoxShadow(
-                                          color: Color(0xff000000).withOpacity(.2),
-                                          offset: Offset(0, 2),
-                                          blurRadius: 6,
-                                          spreadRadius: 1)
-                                    ]),
-                                child: const Icon(
-                                  Icons.add,
-                                  color: Colors.white,
+                              CustomTextWidget(
+                                fontSize: 24,
+                                text: 'Living Room',
+                                fontWeight: FontWeight.bold,
+                              ),
+                              const CircleAvatar(
+                                radius: 15,
+                                backgroundColor: Color(0xffFFFFFF),
+                                child: Icon(
+                                  Icons.search,
+                                  size: 20,
                                 ),
                               )
                             ],
                           ),
-                          SpaceVertical(vertical: 10),
-                          GridView(
-                            primary: false,
-                            shrinkWrap: true,
-                            padding: EdgeInsets.zero,
-                            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-                            children: datas
-                                .map((e) => Stack(
-                                      children: [
-                                        Container(
-                                          margin: EdgeInsets.all(5),
-                                          alignment: Alignment.center,
-                                          padding: const EdgeInsets.all(12),
-                                          decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(10),
-                                            color: const Color(0xff9A7265),
+                          SpaceVertical(vertical: 20),
+                          Container(
+                            padding: EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Color(0xff404040)),
+                              borderRadius: BorderRadius.circular(14),
+                              color: Color(0xffD8E4E8),
+                            ),
+                            height: MediaQuery.of(context).size.height * .08,
+                            width: MediaQuery.of(context).size.width - 35,
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  flex: 1,
+                                  child: Row(
+                                    children: [
+                                      Image.asset('assets/png/suhu.png'),
+                                      SpaceHorizontal(horizontal: 5),
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          CustomTextWidget(
+                                            text: '19\u02DAc',
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold,
+                                            fontColor: Color(0xff4C7380),
                                           ),
-                                          child: Column(children: [
-                                            Row(
-                                              mainAxisAlignment: MainAxisAlignment.end,
-                                              children: [
-                                                Column(
-                                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                                  children: [
-                                                    CustomTextWidget(text: e.heading, fontSize: 15),
-                                                    CustomTextWidget(
-                                                      text: e.subtitle,
-                                                      fontSize: 16,
-                                                      fontColor: Colors.white,
-                                                      fontWeight: FontWeight.bold,
-                                                    ),
-                                                  ],
-                                                )
-                                              ],
+                                          CustomTextWidget(
+                                            text: 'AC',
+                                            fontSize: 11,
+                                            fontWeight: FontWeight.normal,
+                                            fontColor: Color(0xff4C7380),
+                                          )
+                                        ],
+                                      ),
+                                      SpaceHorizontal(horizontal: 10),
+                                      CustomDivider(
+                                        color: Color(0xff404040),
+                                        height: 35,
+                                        width: 2,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 1,
+                                  child: Row(
+                                    children: [
+                                      Image.asset('assets/png/lamp1.png'),
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          CustomTextWidget(
+                                            text: '18 %',
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold,
+                                            fontColor: Color(0xff4C7380),
+                                          ),
+                                          CustomTextWidget(
+                                            text: 'Light Lamp',
+                                            fontSize: 11,
+                                            fontWeight: FontWeight.normal,
+                                            fontColor: Color(0xff4C7380),
+                                          )
+                                        ],
+                                      ),
+                                      SpaceHorizontal(horizontal: 10),
+                                      CustomDivider(
+                                        color: Color(0xff404040),
+                                        height: 35,
+                                        width: 2,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 1,
+                                  child: Row(
+                                    children: [
+                                      Image.asset('assets/png/wifi.png'),
+                                      SpaceHorizontal(horizontal: 5),
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          CustomTextWidget(
+                                            text: '10 Kb/s',
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold,
+                                            fontColor: Color(0xff4C7380),
+                                          ),
+                                          CustomTextWidget(
+                                            text: 'WIFI',
+                                            fontSize: 11,
+                                            fontWeight: FontWeight.normal,
+                                            fontColor: Color(0xff4C7380),
+                                          )
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          SpaceVertical(vertical: 20),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              CustomTextWidget(text: 'Usage this Week', fontSize: 14),
+                              Row(
+                                children: [
+                                  CustomTextWidget(
+                                    text: '2500 ',
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  CustomTextWidget(
+                                    text: 'watt',
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.normal,
+                                  )
+                                ],
+                              )
+                            ],
+                          ),
+                          SpaceVertical(vertical: 20),
+                          ChartComponent(
+                            interval: 50,
+                            maximum: 150,
+                            minimum: 50,
+                            chartData: chartData,
+                          )
+                        ],
+                      ),
+                    ),
+                  )
+                ])),
+          ),
+          //====================== Heading Section End ======================
+
+          //====================== Body Section Start======================
+          Flexible(
+              flex: 11,
+              child: Container(
+                  color: const Color(0xff447381),
+                  child: Stack(children: [
+                    Container(
+                        width: MediaQuery.of(context).size.width,
+                        decoration: const BoxDecoration(
+                          color: Color(0xffD8E4E8),
+                          borderRadius: BorderRadius.only(topRight: Radius.circular(50)),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                          child: Column(children: [
+                            SpaceVertical(vertical: 15),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  children: [
+                                    CustomTextWidget(
+                                      text: 'Device',
+                                      fontSize: 25,
+                                      fontColor: const Color(0xff404040),
+                                    ),
+                                    SpaceHorizontal(horizontal: 5),
+                                    Container(
+                                      alignment: Alignment.center,
+                                      padding: const EdgeInsets.all(5),
+                                      decoration: const BoxDecoration(
+                                        borderRadius: BorderRadius.all(Radius.circular(5)),
+                                        color: Color(0xff447381),
+                                      ),
+                                      child: CustomTextWidget(
+                                        text: '6',
+                                        fontSize: 14,
+                                        fontColor: Colors.white,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Container(
+                                  height: 40,
+                                  width: 40,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      color: Color(0xff9A7265),
+                                      boxShadow: [
+                                        BoxShadow(
+                                            color: Color(0xff000000).withOpacity(.2),
+                                            offset: Offset(0, 2),
+                                            blurRadius: 6,
+                                            spreadRadius: 1)
+                                      ]),
+                                  child: const Icon(
+                                    Icons.add,
+                                    color: Colors.white,
+                                  ),
+                                )
+                              ],
+                            ),
+                            SpaceVertical(vertical: 10),
+                            GridView(
+                              primary: false,
+                              shrinkWrap: true,
+                              padding: EdgeInsets.zero,
+                              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+                              children: datas
+                                  .map((e) => Stack(
+                                        children: [
+                                          Container(
+                                            margin: EdgeInsets.all(5),
+                                            alignment: Alignment.center,
+                                            padding: const EdgeInsets.all(12),
+                                            decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.circular(10),
+                                              color: const Color(0xff9A7265),
                                             ),
-                                            SpaceVertical(vertical: 35),
-                                            Row(
-                                              mainAxisAlignment: MainAxisAlignment.start,
-                                              children: [
-                                                Flexible(
-                                                  fit: FlexFit.loose,
-                                                  flex: 1,
-                                                  child: Column(
-                                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                            child: Column(children: [
+                                              Row(
+                                                mainAxisAlignment: MainAxisAlignment.end,
+                                                children: [
+                                                  Column(
+                                                    crossAxisAlignment: CrossAxisAlignment.end,
                                                     children: [
-                                                      CustomTextWidget(text: e.title, fontSize: 25),
+                                                      CustomTextWidget(text: e.heading, fontSize: 15),
                                                       CustomTextWidget(
-                                                        text: e.place,
+                                                        text: e.subtitle,
                                                         fontSize: 16,
                                                         fontColor: Colors.white,
                                                         fontWeight: FontWeight.bold,
                                                       ),
                                                     ],
-                                                  ),
-                                                ),
-                                                SpaceHorizontal(horizontal: 10),
-                                                Expanded(
-                                                  flex: 1,
-                                                  child: Container(
-                                                    width: 55,
-                                                    height: 28,
-                                                    // padding: EdgeInsets.all(2),
-                                                    decoration: BoxDecoration(
-                                                        color: Colors.white,
-                                                        border: Border.all(width: 2, color: Colors.green),
-                                                        borderRadius: BorderRadius.circular(20)),
-                                                    child: Row(
+                                                  )
+                                                ],
+                                              ),
+                                              SpaceVertical(vertical: 35),
+                                              Row(
+                                                mainAxisAlignment: MainAxisAlignment.start,
+                                                children: [
+                                                  Flexible(
+                                                    fit: FlexFit.loose,
+                                                    flex: 1,
+                                                    child: Column(
+                                                      crossAxisAlignment: CrossAxisAlignment.start,
                                                       children: [
+                                                        CustomTextWidget(text: e.title, fontSize: 25),
                                                         CustomTextWidget(
-                                                          text: 'OFF',
-                                                          fontSize: 17,
-                                                          fontColor: Colors.green,
+                                                          text: e.place,
+                                                          fontSize: 16,
+                                                          fontColor: Colors.white,
+                                                          fontWeight: FontWeight.bold,
                                                         ),
-                                                        Image.asset(
-                                                          'assets/png/switch_icon.png',
-                                                          height: 20,
-                                                          width: 20,
-                                                        )
                                                       ],
                                                     ),
                                                   ),
-                                                )
-                                              ],
-                                            )
-                                          ]),
-                                        ),
-                                        Positioned(
-                                            top: 5,
-                                            left: 10,
-                                            child: Image.asset(
-                                              e.icon,
-                                              height: 65,
-                                            )),
-                                      ],
-                                    ))
-                                .toList(),
-                          ),
-                          SpaceVertical(vertical: 10),
-                          Container(
-                            alignment: Alignment.center,
-                            width: MediaQuery.of(context).size.width - 40,
-                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: Color(0xff9A7265), boxShadow: [
-                              BoxShadow(color: Color(0xff000000).withOpacity(.2), offset: Offset(0, 2), blurRadius: 6, spreadRadius: 1)
-                            ]),
-                            height: 52,
-                            child: CustomTextWidget(
-                              text: 'Turn Off All Devices',
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
+                                                  SpaceHorizontal(horizontal: 10),
+                                                  Expanded(
+                                                    flex: 1,
+                                                    child: Container(
+                                                      width: 55,
+                                                      height: 28,
+                                                      // padding: EdgeInsets.all(2),
+                                                      decoration: BoxDecoration(
+                                                          color: Colors.white,
+                                                          border: Border.all(width: 2, color: Colors.green),
+                                                          borderRadius: BorderRadius.circular(20)),
+                                                      child: Row(
+                                                        children: [
+                                                          CustomTextWidget(
+                                                            text: 'OFF',
+                                                            fontSize: 17,
+                                                            fontColor: Colors.green,
+                                                          ),
+                                                          Image.asset(
+                                                            'assets/png/switch_icon.png',
+                                                            height: 20,
+                                                            width: 20,
+                                                          )
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  )
+                                                ],
+                                              )
+                                            ]),
+                                          ),
+                                          Positioned(
+                                              top: 5,
+                                              left: 10,
+                                              child: Image.asset(
+                                                e.icon,
+                                                height: 65,
+                                              )),
+                                        ],
+                                      ))
+                                  .toList(),
                             ),
-                          ),
-                          SpaceVertical(vertical: 10),
-                        ]),
-                      ))
-                ]))
-            //====================== Body Section Start======================
-            ),
-      ]),
+                            SpaceVertical(vertical: 10),
+                            Container(
+                              alignment: Alignment.center,
+                              width: MediaQuery.of(context).size.width - 40,
+                              decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: Color(0xff9A7265), boxShadow: [
+                                BoxShadow(
+                                    color: Color(0xff000000).withOpacity(.2), offset: Offset(0, 2), blurRadius: 6, spreadRadius: 1)
+                              ]),
+                              height: 52,
+                              child: CustomTextWidget(
+                                text: 'Turn Off All Devices',
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            SpaceVertical(vertical: 10),
+                          ]),
+                        ))
+                  ]))
+              //====================== Body Section Start======================
+              ),
+        ]),
+      ),
     );
   }
 }

@@ -12,14 +12,14 @@ import 'package:intl/intl.dart';
 
 class PowerUsageScreenView extends StatelessWidget {
   String selectedItem = 'Living Room';
-  final List<PowerDataData> chartData = [
-    PowerDataData(1, 250, 'Mon'),
-    PowerDataData(2, 150, 'Tues'),
-    PowerDataData(3, 100, 'Wed'),
-    PowerDataData(4, 50, 'Thurs'),
-    PowerDataData(5, 10, 'Fri'),
-    PowerDataData(5, 20, 'Sat'),
-    PowerDataData(5, 30, 'Sun')
+  List<ChartSampleData> chartData = <ChartSampleData>[
+    ChartSampleData(x: 'Mon', y: 43),
+    ChartSampleData(x: 'Tues', y: 140),
+    ChartSampleData(x: 'Wed', y: 180),
+    ChartSampleData(x: 'Thurs', y: 90),
+    ChartSampleData(x: 'Fri', y: 100),
+    ChartSampleData(x: 'Sat', y: 35),
+    ChartSampleData(x: 'Sun', y: 72),
   ];
 
   List<PowerModeModel> datas = [
@@ -163,43 +163,14 @@ class PowerUsageScreenView extends StatelessWidget {
                         ),
                         SpaceVertical(vertical: 10),
                         SizedBox(
-                          width: 550,
-                          height: 200,
-                          child: SfCartesianChart(
-                            enableAxisAnimation: true, isTransposed: true,
-                            borderColor: Colors.white,
-                            onAxisLabelTapped: (args) {
-                              // converted the axis label date time argument value which is millisecondsepoch to DateTime format.
-                              DateTime axisValue = DateTime.fromMillisecondsSinceEpoch(args.value.toInt());
-                              // checked the axis name to modify the x-axis labels.
-                              // if (args.axisName == 'Day') {
-                              //   // checked whether the axis label's DateTime values are weekends and if yes then,
-                              //   // we have set empty string for its text argument so that no label will be displayed for weekend DateTime values.
-                              //   if ((axisValue.weekday == DateTime.saturday) || (axisValue.weekday == DateTime.sunday)) {
-                              //     args.text = '';
-                              //   }
-                              // }
-                            },
-
-                            //title: ChartTitle(text: 'Yearly sales analysis'),
-                            //legend: Legend(isVisible: true),
-                            tooltipBehavior: TooltipBehavior(enable: true),
-                            series: <ChartSeries>[
-                              SplineSeries<PowerDataData, dynamic>(
-                                  xAxisName: 'Day',
-                                  dataSource: chartData,
-                                  xValueMapper: (PowerDataData sales, _) => sales.day,
-                                  yValueMapper: (PowerDataData sales, _) => sales.kwH,
-                                  // dataLabelSettings: DataLabelSettings(isVisible: true),
-                                  enableTooltip: true)
-                            ],
-                            primaryXAxis: NumericAxis(
-                              edgeLabelPlacement: EdgeLabelPlacement.shift,
-                            ),
-                            primaryYAxis:
-                                NumericAxis(labelFormat: '{value}', numberFormat: NumberFormat.simpleCurrency(decimalDigits: 0)),
-                          ),
-                        ),
+                            width: 550,
+                            height: 200,
+                            child: ChartComponent(
+                              interval: 50,
+                              maximum: 250,
+                              minimum: 0,
+                              chartData: chartData,
+                            )),
                         SpaceVertical(
                           vertical: 25,
                         )
@@ -293,7 +264,8 @@ class PowerUsageScreenView extends StatelessWidget {
                                                     children: [
                                                       CustomTextWidget(text: e.useunit, fontSize: 12, fontColor: Color(0xff878787)),
                                                       SpaceHorizontal(horizontal: 5),
-                                                      CustomDivider(color: Color(0xff404040),
+                                                      CustomDivider(
+                                                        color: Color(0xff404040),
                                                         height: 15,
                                                         width: .5,
                                                       ),
