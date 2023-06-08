@@ -1,24 +1,11 @@
-// import 'package:fl_chart/fl_chart.dart';
-// import 'package:flutter/widgets.dart';
-// import 'package:collection/collection.dart';
+import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/src/widgets/placeholder.dart';
 
-// class LineChart extends StatelessWidget {
-//   final List<Points> points;
-//   LineChart({required this.points});
-//   @override
-//   Widget build(BuildContext context) {
-//     // TODO: implement build
-//     return LineChart(LineChartData(lineBarsData: [LineChartBarData(spots:points.map((e) => FlSpot(e.x, e.y)) )]));
-//   }
-// }
+class My extends StatelessWidget {
+  const My({super.key});
 
-// class Points {
-//   final double x;
-//   final double y;
-//   Points({required this.x, required this.y});
-// }
-
-// List<Points> get pricePoints {
-//   final data = <double>[2, 4, 5, 10, 9, 7, 4, 5];
-//   return data.mapIndexed((index, element) => Points(x: index.toDouble(), y: element)).toList();
-// }
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
+  }
+}

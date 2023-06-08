@@ -161,13 +161,17 @@ class ItemDetailsScreenView extends StatelessWidget {
                                           return Row(
                                             mainAxisAlignment: MainAxisAlignment.start,
                                             children: [
-                                              Container(
-                                                height: 10,
-                                                width: 20,
-                                                decoration: BoxDecoration(
-                                                    shape: BoxShape.circle,
-                                                    color: Color(0xff447381),
-                                                    border: Border.all(width: 2, color: Colors.white)),
+                                              Stack(
+                                                children: [
+                                                  Container(
+                                                    height: 10,
+                                                    width: 20,
+                                                    decoration: BoxDecoration(
+                                                        shape: BoxShape.circle,
+                                                        color: Color(0xff447381),
+                                                        border: Border.all(width: 2, color: Colors.white)),
+                                                  ),
+                                                ],
                                               ),
                                               CustomDivider(height: 1, width: 25, color: Colors.white),
                                             ],
