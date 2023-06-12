@@ -12,7 +12,7 @@ class LivingRoomScreenView extends StatelessWidget {
     ChartSampleData(x: '1pm', y: 51),
     ChartSampleData(x: '2pm', y: 89),
     ChartSampleData(x: '3pm', y: 150),
-    ChartSampleData(x: '4pm', y: 55),
+    ChartSampleData(x: '4pm', y: 71),
     ChartSampleData(x: '5pm', y: 56),
     ChartSampleData(x: '6pm', y: 75),
     ChartSampleData(x: '7pm', y: 135),

@@ -13,12 +13,12 @@ import 'package:intl/intl.dart';
 class PowerUsageScreenView extends StatelessWidget {
   String selectedItem = 'Living Room';
   List<ChartSampleData> chartData = <ChartSampleData>[
-    ChartSampleData(x: 'Mon', y: 43),
+    ChartSampleData(x: 'Mon', y: 51),
     ChartSampleData(x: 'Tues', y: 140),
     ChartSampleData(x: 'Wed', y: 180),
     ChartSampleData(x: 'Thurs', y: 90),
     ChartSampleData(x: 'Fri', y: 100),
-    ChartSampleData(x: 'Sat', y: 35),
+    ChartSampleData(x: 'Sat', y: 61),
     ChartSampleData(x: 'Sun', y: 72),
   ];
 
@@ -322,11 +322,4 @@ class PowerUsageScreenView extends StatelessWidget {
       ]),
     );
   }
-}
-
-class PowerDataData {
-  PowerDataData(this.day, this.kwH, this.xName);
-  final int day;
-  final String xName;
-  final double kwH;
 }

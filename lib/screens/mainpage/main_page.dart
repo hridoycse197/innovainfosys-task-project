@@ -35,8 +35,8 @@ class _MainPageState extends State<MainPage> {
   bottomnavbar() {
     return Container(
       height: 90.0,
+      width: MediaQuery.of(context).size.width,
       color: const Color(0xff447381),
-      padding: const EdgeInsets.all(10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
@@ -46,8 +46,12 @@ class _MainPageState extends State<MainPage> {
                 currentIndex = 0;
               });
             },
-            child: Expanded(
-              flex: currentIndex == 0 ? 2 : 1,
+            child:
+                // Expanded(
+                //  // flex: currentIndex == 0 ? 2 : 1,
+                //   child:
+                Padding(
+              padding: const EdgeInsets.only(right: 5),
               child: Container(
                 decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(15)),
                 alignment: Alignment.center,
@@ -79,14 +83,19 @@ class _MainPageState extends State<MainPage> {
               ),
             ),
           ),
+          // ),
           GestureDetector(
             onTap: () {
               setState(() {
                 currentIndex = 1;
               });
             },
-            child: Expanded(
-              flex: currentIndex == 1 ? 2 : 1,
+            child:
+                //  Expanded(
+                //   flex: currentIndex == 1 ? 2 : 1,
+                //   child:
+                Padding(
+              padding: const EdgeInsets.only(right: 5),
               child: Container(
                 decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(15)),
                 alignment: Alignment.center,
@@ -117,6 +126,7 @@ class _MainPageState extends State<MainPage> {
                       ),
               ),
             ),
+            //   ),
           ),
           GestureDetector(
             onTap: () {
@@ -124,8 +134,12 @@ class _MainPageState extends State<MainPage> {
                 currentIndex = 2;
               });
             },
-            child: Expanded(
-              flex: currentIndex == 2 ? 2 : 1,
+            child:
+                // Expanded(
+                //   flex: currentIndex == 2 ? 2 : 1,
+                //   child:
+                Padding(
+              padding: const EdgeInsets.only(right: 5),
               child: Container(
                 decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(15)),
                 alignment: Alignment.center,
@@ -156,6 +170,7 @@ class _MainPageState extends State<MainPage> {
                       ),
               ),
             ),
+            // ),
           ),
           GestureDetector(
             onTap: () {
@@ -163,39 +178,41 @@ class _MainPageState extends State<MainPage> {
                 currentIndex = 3;
               });
             },
-            child: Expanded(
-              flex: currentIndex == 3 ? 2 : 1,
-              child: Container(
-                decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(15)),
-                alignment: Alignment.center,
-                height: 80,
-                width: currentIndex == 3 ? 120 : 80,
-                child: currentIndex != 3
-                    ? const ImageIcon(
-                        AssetImage('assets/png/user.png'),
-                        color: Color(0xff4C7380),
-                        size: 30.0,
-                      )
-                    : Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const ImageIcon(
-                            AssetImage('assets/png/user.png'),
-                            color: Color(0xff4C7380),
-                            size: 30.0,
-                          ),
-                          SpaceHorizontal(horizontal: 10),
-                          CustomTextWidget(
-                            text: 'User',
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            fontColor: Color(0xff4C7380),
-                          ),
-                        ],
-                      ),
-              ),
+            child:
+                //  Expanded(
+                //   flex: currentIndex == 3 ? 2 : 1,
+                //   child:
+                Container(
+              decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(15)),
+              alignment: Alignment.center,
+              height: 80,
+              width: currentIndex == 3 ? 120 : 80,
+              child: currentIndex != 3
+                  ? const ImageIcon(
+                      AssetImage('assets/png/user.png'),
+                      color: Color(0xff4C7380),
+                      size: 30.0,
+                    )
+                  : Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const ImageIcon(
+                          AssetImage('assets/png/user.png'),
+                          color: Color(0xff4C7380),
+                          size: 30.0,
+                        ),
+                        SpaceHorizontal(horizontal: 10),
+                        CustomTextWidget(
+                          text: 'User',
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          fontColor: Color(0xff4C7380),
+                        ),
+                      ],
+                    ),
             ),
           ),
+          //  ),
         ],
       ),
     );

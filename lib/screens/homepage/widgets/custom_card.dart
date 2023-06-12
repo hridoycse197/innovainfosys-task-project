@@ -20,38 +20,40 @@ class CustomCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
         color: const Color(0xffe2ecef),
       ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CircleAvatar(
-                backgroundColor: Colors.white,
-                child: Image.asset(
-                  imagePath,
-                  height: 25,
+      child: FittedBox(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CircleAvatar(
+                  backgroundColor: Colors.white,
+                  child: Image.asset(
+                    imagePath,
+                    height: 25,
+                  ),
                 ),
-              ),
-              SpaceHorizontal(horizontal: 5),
-              Text.rich(
-                TextSpan(
-                  children: [
-                    TextSpan(text: percentange, style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
-                    TextSpan(text: titletrailing, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-                  ],
-                ),
-              )
-            ],
-          ),
-          SpaceVertical(vertical: 5),
-          CustomTextWidget(
-            text: title,
-            fontSize: 15,
-            fontColor: Colors.black,
-          )
-        ],
+                SpaceHorizontal(horizontal: 5),
+                Text.rich(
+                  TextSpan(
+                    children: [
+                      TextSpan(text: percentange, style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+                      TextSpan(text: titletrailing, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                    ],
+                  ),
+                )
+              ],
+            ),
+            SpaceVertical(vertical: 5),
+            CustomTextWidget(
+              text: title,
+              fontSize: 15,
+              fontColor: Colors.black,
+            )
+          ],
+        ),
       ),
     );
   }
